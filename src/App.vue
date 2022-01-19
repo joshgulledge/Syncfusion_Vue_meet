@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+   <!-- after we import syncfusion we can use the ejs-grid tag -->
+   <ejs-grid :dataSource="localData">
+
+   </ejs-grid>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+// imports
+import Vue from 'vue';
+import { GridPlugin } from '@syncfusion/ej2-vue-grids';
+
+
+Vue.use(GridPlugin);
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  // temp hardcode some data to be displayed in the grid
+  data () {
+    return {
+      localData: [
+      {orderId: 1, customerName: 'something', price: 57.26},
+      {orderId: 2, customerName: 'anything', price: 237.96},
+      {orderId: 3, customerName: 'everything', price: 176.92},
+      {orderId: 4, customerName: 'nothing', price: 78.64}
+    ]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import url(https://cdn.syncfusion.com/ej2/material.css);
 </style>
