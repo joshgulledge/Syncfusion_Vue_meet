@@ -33,7 +33,8 @@
        <e-column 
         field="company"
         headerText="Company Name" 
-        textAlign="Right">
+        textAlign="Right"
+        editType="dropdownedit">
        </e-column>
 
        <e-column 
@@ -200,6 +201,7 @@ export default {
           "address": "520 Lester Court, Lorraine, Ohio, 1997"
         }
       ],
+      // below are the settings used to define syncfusion options, add to the column for options to be used
       pageSettings: {
         pageSize: 5
       },
@@ -207,9 +209,17 @@ export default {
         allowAdding: true,
         allowEditing: true,
         allowDeleting: true,
-        mode: "Normal"
+        mode: "Dialog" // this brings up a dialog box to make edits in
+        // you can use "Batch" as a mode to save multiple options at same time
+        // you can use "Normal" as a mode to save single line option
+
       },
-      toolbarOptions: ["Add", "Edit", "Delete", "Update", "Cancel"]
+      toolbarOptions: ["Add", "Edit", "Delete", "Update", "Cancel"],
+      numericParams: {
+        params: {
+          format: "C2"
+        }
+      }
     }
   },
   // add the page and sort and filter property from syncfusion
