@@ -9,7 +9,9 @@
     :allowPaging="true"
     :pageSettings=pageSettings
     :allowSorting="true"
-    :allowFiltering="true">
+    :allowFiltering="true"
+    :editSettings="editOptions"
+    :toolbar="toolbarOptions">
 
      <!-- to customize the columns -->
      <e-columns>
@@ -17,7 +19,8 @@
        <e-column 
         field="_id"
         headerText="Order Id" 
-        textAlign="Right">
+        textAlign="Right"
+        :isPrimaryKey="true">
         <!-- the headerText is what is displayed, while field is the name of data field -->
        </e-column>
 
@@ -52,7 +55,7 @@
 // imports
 import Vue from 'vue';
 import { GridPlugin, Page, 
-          Sort, Filter } from '@syncfusion/ej2-vue-grids';
+          Sort, Filter, Edit, Toolbar } from '@syncfusion/ej2-vue-grids';
 
 
 Vue.use(GridPlugin);
@@ -199,7 +202,14 @@ export default {
       ],
       pageSettings: {
         pageSize: 5
-      }
+      },
+      editOptions: {
+        allowAdding: true,
+        allowEditing: true,
+        allowDeleting: true,
+        mode: "Normal"
+      },
+      toolbarOptions: ["Add", "Edit", "Delete", "Update", "Cancel"]
     }
   },
   // add the page and sort and filter property from syncfusion
@@ -207,7 +217,9 @@ export default {
     grid: [
       Page,
       Sort,
-      Filter
+      Filter, 
+      Edit,
+      Toolbar
     ]
   }
 }
